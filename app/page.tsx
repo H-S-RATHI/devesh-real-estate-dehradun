@@ -7,6 +7,7 @@ import { UrgencyBanner } from "@/components/urgency-banner"
 import { ContactCTA } from "@/components/contact-cta"
 import { ProfessionalBadge } from "@/components/professional-badge"
 import { ProfessionalStats } from "@/components/professional-stats"
+import { MapSection } from "@/components/map-section"
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       <LocationHighlights />
       <Testimonials />
       <ContactCTA />
-    </main>
+      <MapSection />
+      </main>
   )
 }

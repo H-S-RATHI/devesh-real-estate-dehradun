@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { TrackedButton } from "@/components/tracked-button"
 import { ContactFormTracked } from "@/components/contact-form-tracked"
 import { Phone, MapPin, Clock, Mail } from "lucide-react"
+import { MapSection } from "@/components/map-section"
 
 export default function ContactPage() {
   return (
@@ -112,6 +113,11 @@ export default function ContactPage() {
             Emergency Call: 9760872136
           </TrackedButton>
         </div>
+        
+        {/* Map Section */}
+    
+          <MapSection />
+
       </div>
     </div>
   )
