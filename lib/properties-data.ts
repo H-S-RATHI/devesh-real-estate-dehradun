@@ -43,7 +43,7 @@ export const properties = [
     location: "Asthal, Dehradun",
     price: "₹60,000",
     unit: "per sq. yard",
-    image: "/residential-development.png",
+    image: "/sold-out.png",
     features: ["40ft & 30ft Wide Roads", "Mountain View", "Forest View", "All Facilities"],
     status: "SOLD OUT",
     views: 156,
