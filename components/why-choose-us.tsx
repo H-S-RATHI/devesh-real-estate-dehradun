@@ -18,7 +18,7 @@ export function WhyChooseUs() {
     {
       icon: TrendingUp,
       title: "High ROI Guaranteed",
-      description: "Average 20-25% appreciation in prime locations",
+      description: "Average 25-30% appreciation in prime locations",
       color: "text-purple-600",
     },
     {
