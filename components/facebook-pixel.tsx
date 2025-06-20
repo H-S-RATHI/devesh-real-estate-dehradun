@@ -10,9 +10,10 @@ export function FacebookPixel() {
   useEffect(() => {
     // Initialize Facebook Pixel
     if (typeof window !== "undefined") {
-      ;((f: any, b, e, v, n, t, s) => {
+      ;((f: any, b, e, v) => {
+        let n: any, t: any, s: any;
         if (f.fbq) return
-        n = f.fbq = () => {
+        n = f.fbq = function() {
           n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
         }
         if (!f._fbq) f._fbq = n
