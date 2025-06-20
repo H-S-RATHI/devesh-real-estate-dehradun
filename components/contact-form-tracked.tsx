@@ -1,12 +1,17 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { trackLead, trackContact } from "@/lib/facebook-pixel"
+import emailjs from '@emailjs/browser';
+
+// Debug log to check environment variables
+console.log('EmailJS Public Key:', process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
+console.log('EmailJS Service ID:', process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID);
+console.log('EmailJS Template ID:', process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID);
 
 export function ContactFormTracked() {
   const [formData, setFormData] = useState({
@@ -18,19 +23,62 @@ export function ContactFormTracked() {
     message: "",
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-    // Track lead generation
-    trackLead(formData.property || "General Inquiry")
-    trackContact()
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Initialize EmailJS with public key
+    try {
+      emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!);
+    } catch (error) {
+      console.error('Failed to initialize EmailJS:', error);
+      alert('Failed to initialize email service. Please try again later.');
+      setIsSubmitting(false);
+      return;
+    }
 
-    // Here you would normally send the form data to your backend
-    console.log("Form submitted:", formData)
+    try {
+      // Track lead generation
+      trackLead(formData.property || "General Inquiry");
+      trackContact();
 
-    // Show success message or redirect
-    alert("Thank you! We will contact you within 30 minutes.")
-  }
+      // Send email using EmailJS
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone,
+        property: formData.property,
+        budget: formData.budget,
+        message: formData.message,
+      };
+
+      const response = await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        templateParams
+      );
+      console.log('Email sent successfully:', response);
+      
+      alert("Thank you! We will contact you within 30 minutes.");
+      
+      // Reset form
+      setFormData({
+        name: "",
+        phone: "",
+        email: "",
+        property: "",
+        budget: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Error sending email:", error);
+      alert("There was an error sending your message. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -119,8 +167,12 @@ export function ContactFormTracked() {
         />
       </div>
 
-      <Button type="submit" className="w-full bg-red-600 hover:bg-red-700 text-lg py-3">
-        Send Message & Get Call Back
+      <Button 
+        type="submit" 
+        className="w-full bg-red-600 hover:bg-red-700 text-lg py-3"
+        disabled={isSubmitting}
+      >
+        {isSubmitting ? 'Sending...' : 'Send Message & Get Call Back'}
       </Button>
     </form>
   )
