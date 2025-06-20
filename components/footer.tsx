@@ -26,9 +26,12 @@ export function Footer() {
               families find their dream properties.
             </p>
             <div className="flex space-x-4">
-              <Facebook className="w-5 h-5 text-gray-400 hover:text-blue-400 cursor-pointer" />
-              <Instagram className="w-5 h-5 text-gray-400 hover:text-blue-400 cursor-pointer" />
-              <Twitter className="w-5 h-5 text-gray-400 hover:text-blue-400 cursor-pointer" />
+              <a href="https://www.facebook.com/profile.php?id=61577071786295" target="_blank" rel="noopener noreferrer">
+                <Facebook className="w-5 h-5 text-gray-400 hover:text-blue-400 cursor-pointer" />
+              </a>
+              <a href="https://www.instagram.com/devesh_real_estate_dehradun/" target="_blank" rel="noopener noreferrer">
+                <Instagram className="w-5 h-5 text-gray-400 hover:text-blue-400 cursor-pointer" />
+              </a>
             </div>
           </div>
 
@@ -78,11 +81,11 @@ export function Footer() {
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4 text-blue-400" />
-                <span className="text-gray-400">info@deveshrealestate.com</span>
+                <span className="text-gray-400">deveshrajput5245@gmail.com</span>
               </div>
               <div className="flex items-center space-x-2">
                 <MapPin className="w-4 h-4 text-blue-400" />
-                <span className="text-gray-400">Bhauwala, Dehradun</span>
+                <span className="text-gray-400">Dehradun, Uttarakhand</span>
               </div>
             </div>
           </div>

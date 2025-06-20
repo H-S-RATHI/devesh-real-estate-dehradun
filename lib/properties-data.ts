@@ -6,7 +6,7 @@ export const properties = [
     price: "₹17,000",
     unit: "per sq. yard",
     image: "/bhauwala-plots.png",
-    features: ["30ft Wide Road", "Mountain Views", "Clear Title", "Peaceful Surroundings"],
+    features: ["30ft Wide Road", "Mountain Views", "Peaceful Surroundings"],
     status: "Available",
     views: 47,
     trending: true,

@@ -29,8 +29,8 @@ export function ContactCTA() {
                   <div className="flex items-center space-x-3">
                     <MapPin className="w-5 h-5 text-blue-200" />
                     <div>
-                      <p className="font-semibold">Location</p>
-                      <p className="text-blue-100">Bhauwala, Dehradun</p>
+                      <p className="font-semibold">Office Location</p>
+                      <p className="text-blue-100">2-nd Floor, Toothpick Building, Kirshali Chowk, Dehradun</p>
                     </div>
                   </div>
                   <div className="flex items-center space-x-3">
@@ -52,26 +52,26 @@ export function ContactCTA() {
             </div>
 
             <div className="space-y-4">
-  <Button size="lg" className="w-full bg-white text-blue-700 hover:bg-gray-100 text-lg py-4">
-    <a href="tel:9760872136" className="flex items-center justify-center space-x-2">
-      <Phone className="w-5 h-5" />
-      <span>Call Now: 9760872136</span>
-    </a>
-  </Button>
+              <Button size="lg" className="w-full bg-white text-blue-700 hover:bg-gray-100 text-lg py-4">
+                <a href="tel:9760872136" className="flex items-center justify-center space-x-2">
+                  <Phone className="w-5 h-5" />
+                  <span>Call Now: 9760872136</span>
+                </a>
+              </Button>
 
-  {/* Transparent outline button */}
-  <Button
-    asChild
-    size="lg"
-    variant="outline"
-    className="w-full bg-transparent border-white text-white hover:bg-white hover:text-blue-700 text-lg py-4"
-  >
-    <a href="https://wa.me/919760872136?text=Hi, I'm interested in the Bhauwala plots. Please share more details.">
-      <MessageCircle className="w-5 h-5 inline-block align-middle" />
-      <span className="align-middle">WhatsApp for Details</span>
-    </a>
-  </Button>
-</div>
+              {/* Transparent outline button */}
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="w-full bg-transparent border-white text-white hover:bg-white hover:text-blue-700 text-lg py-4"
+              >
+                <a href="https://wa.me/919760872136?text=Hi, I'm interested in the Bhauwala plots. Please share more details.">
+                  <MessageCircle className="w-5 h-5 inline-block align-middle" />
+                  <span className="align-middle">WhatsApp for Details</span>
+                </a>
+              </Button>
+            </div>
 
 
             <div className="text-center">
