@@ -17,8 +17,6 @@ export function ContactFormTracked() {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
-    email: "",
-    property: "",
     budget: "",
     message: "",
   })
@@ -41,15 +39,13 @@ export function ContactFormTracked() {
 
     try {
       // Track lead generation
-      trackLead(formData.property || "General Inquiry");
+      trackLead("General Inquiry");
       trackContact();
 
       // Send email using EmailJS
       const templateParams = {
         from_name: formData.name,
-        from_email: formData.email,
         phone: formData.phone,
-        property: formData.property,
         budget: formData.budget,
         message: formData.message,
       };
@@ -67,8 +63,6 @@ export function ContactFormTracked() {
       setFormData({
         name: "",
         phone: "",
-        email: "",
-        property: "",
         budget: "",
         message: "",
       });
@@ -110,34 +104,6 @@ export function ContactFormTracked() {
             required
           />
         </div>
-      </div>
-
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-        <Input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          placeholder="Enter your email"
-        />
-      </div>
-
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">Property Interest</label>
-        <select
-          name="property"
-          value={formData.property}
-          onChange={handleChange}
-          className="w-full p-2 border border-gray-300 rounded-md"
-        >
-          <option value="">Select Property</option>
-          <option value="Bhauwala Plots">Bhauwala Residential Plots</option>
-          <option value="Thano Road Plots">Thano Road Plots</option>
-          <option value="Commercial Properties">Commercial Properties</option>
-          <option value="Investment Consultation">Investment Consultation</option>
-          <option value="Other">Other</option>
-        </select>
       </div>
 
       <div>

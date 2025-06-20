@@ -31,20 +31,11 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  <div className="flex items-center space-x-4 p-4 bg-blue-50 rounded-lg">
-                    <Mail className="w-6 h-6 text-blue-600" />
-                    <div>
-                      <p className="font-semibold text-gray-900">Email</p>
-                      <p className="text-blue-600 font-medium">info@deveshrealestate.com</p>
-                      <p className="text-sm text-gray-600">We'll respond within 2 hours</p>
-                    </div>
-                  </div>
-
                   <div className="flex items-center space-x-4 p-4 bg-green-50 rounded-lg">
                     <MapPin className="w-6 h-6 text-green-600" />
                     <div>
                       <p className="font-semibold text-gray-900">Office Locations</p>
-                      <p className="text-green-600 font-medium">Bhauwala & Thano Road, Dehradun</p>
+                      <p className="text-green-600 font-medium">2-nd Floor, Toothpick Building, Kirshali Chowk, Dehradun</p>
                       <p className="text-sm text-gray-600">Visit us for site inspection</p>
                     </div>
                   </div>
