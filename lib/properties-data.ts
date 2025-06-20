@@ -24,7 +24,7 @@ export const properties = [
     location: "Thano Road, Dehradun",
     price: "₹27,000",
     unit: "per Gaj",
-    image: "/residential-development.png",
+    image: "/thano-site.png",
     features: ["15ft Wide Road", "Mountain View", "Forest View", "Highway Access"],
     status: "Available",
     views: 32,
