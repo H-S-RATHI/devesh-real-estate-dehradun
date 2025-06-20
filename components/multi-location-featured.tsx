@@ -126,14 +126,30 @@ export function MultiLocationFeatured() {
               <p className="text-gray-600">Our track record speaks for itself</p>
             </div>
 
-            <Card className="max-w-2xl mx-auto">
-              <CardContent className="p-6">
+            <Card className="relative max-w-2xl mx-auto overflow-hidden">
+            <Image
+                  src={soldProject.image || "/placeholder.svg"}
+                  alt={soldProject.title}
+                  width={600}
+                  height={300}
+                  className="w-full h-64 object-cover"
+                />
+              {/* MDDA Approved Stamp */}
+              <div className="absolute top-3 right-4 bg-yellow-500 text-white px-6 py-1 rounded-full text-sm font-semibold transform shadow-md">
+                MDDA Approved
+              </div>
+              <div className="px-6 pt-4">
+                <div className="flex items-center space-x-2 text-blue-600">
+                  <MapPin className="w-4 h-4" />
+                  <span className="text-sm font-medium">{soldProject.location}</span>
+                </div>
+              </div>
+              <CardContent className="px-6 pb-6 pt-2">
                 <div className="flex items-center justify-between mb-4">
                   <div>
                     <h4 className="text-xl font-bold text-gray-900">{soldProject.title}</h4>
-                    <p className="text-gray-600">{soldProject.location}</p>
                   </div>
-                  <div className="bg-red-600 text-white px-4 py-2 rounded-full font-semibold">
+                  <div className="bg-red-600 text-white px-4 py-2 rounded-full font-semibold -mt-6">
                     <CheckCircle className="w-4 h-4 inline mr-1" />
                     SOLD OUT
                   </div>

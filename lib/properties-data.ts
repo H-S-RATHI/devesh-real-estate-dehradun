@@ -41,7 +41,7 @@ export const properties = [
     id: 3,
     title: "Sahastradhara Road Project",
     location: "Asthal, Dehradun",
-    price: "₹55,000",
+    price: "₹60,000",
     unit: "per sq. yard",
     image: "/residential-development.png",
     features: ["40ft & 30ft Wide Roads", "Mountain View", "Forest View", "All Facilities"],
