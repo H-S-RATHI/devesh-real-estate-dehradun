@@ -15,27 +15,27 @@ const AnimatedMap = () => {
                 <div className="w-full">
                     <div className="relative group">
                         {/* Full width map container with glassmorphism */}
-                        <div className="relative bg-white/80 shadow-2xl border-t border-white/50">
-                            <div className="relative overflow-hidden border-8 border-blue-800">
+                        <div className="relative shadow-xl rounded-lg">
+                            <div className="relative overflow-hidden rounded-lg">
                                 <iframe
                                     src={`${iframeSrc}&noborder`}
+                                    width="100%"
+                                    height="500px"
                                     allowFullScreen
-                                    loading="lazy"
                                     title="2nd Floor Tooth Pick, Dehradun Location"
-                                    className="w-full h-64 sm:h-80 md:h-96 lg:h-[500px] border-0 pointer-events-none"
-                                    style={{ filter: 'grayscale(0%)' }}
+                                    className="w-full h-64 sm:h-80 md:h-96 lg:h-[500px] rounded-lg"
                                 />
                             </div>
 
                             {/* Enhanced floating Google Maps button */}
                             <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
                                 <div className="group relative">
-                                    <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-blue-600 rounded-full blur opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                    <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full blur opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
                                     <a
                                         href={`https://www.google.com/maps/search/?api=1&query=${locationQuery}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="relative flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-600 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-sm"
+                                        className="relative flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-sm"
                                     >
                                         <Navigation className="w-4 h-4 animate-pulse" />
                                         <span>Open in Google Maps</span>
