@@ -27,8 +27,11 @@ const AnimatedMap = () => {
                                 />
                             </div>
 
+                            {/* Add transparent overlay to prevent iframe hover interaction */}
+                            <div className="absolute inset-0 z-10"></div>
+
                             {/* Enhanced floating Google Maps button */}
-                            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
+                            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20">
                                 <div className="group relative">
                                     <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full blur opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
                                     <a

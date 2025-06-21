@@ -35,7 +35,7 @@ export function UrgencyBanner() {
       <div className="container mx-auto flex items-center justify-center text-center">
         <Clock className="w-4 h-4 mr-2" />
         <span className="text-sm font-medium">
-          🔥 LIMITED TIME OFFER: Only 5 plots left! Special price ends in{" "}
+          🔥 LIMITED TIME OFFER: Only 2 Corner plots left! Special price ends in{" "}
           <span className="font-bold">
             {String(timeLeft.hours).padStart(2, "0")}:{String(timeLeft.minutes).padStart(2, "0")}:
             {String(timeLeft.seconds).padStart(2, "0")}
