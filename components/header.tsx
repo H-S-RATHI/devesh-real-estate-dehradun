@@ -16,27 +16,31 @@ export function Header() {
       <header className="bg-white shadow-lg sticky top-0 z-50 border-b border-gray-100">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
-            <Link href="/" className="flex items-center space-x-2">
+            <Link href="/" className="flex items-center space-x-2 min-w-0 flex-1 mr-4">
               {/* Main Logo */}
               <Image
                 src="/logo.png"
                 alt="Devesh Real Estate Dehradun"
                 width={50}
                 height={50}
-                className="rounded-full"
+                className="rounded-full flex-shrink-0"
               />
-              <div>
-                <h1 className="text-xl font-bold text-gray-900">Devesh Real Estate Dehradun</h1>
+              <div className="min-w-0 flex-1">
+                <h1 className="text-lg md:text-xl font-bold text-gray-900 leading-tight truncate">
+                  Devesh Real Estate Dehradun
+                </h1>
                 {/* Powered By with Doon Biosphere logo */}
-                <div className="flex items-center space-x-2 pt-1">
+                <div className="flex items-center space-x-1 pt-1">
                   <Image
                     src="/Doon-logo.jpg"
                     alt="Doon Biosphere LLP"
-                    width={20}
-                    height={20}
-                    className="rounded-full"
+                    width={16}
+                    height={16}
+                    className="rounded-full flex-shrink-0"
                   />
-                  <p className="text-sm text-blue-600">– Powered by Doon Biosphere LLP</p>
+                  <p className="text-xs md:text-sm text-blue-600 leading-tight truncate">
+                    – Powered by Doon Biosphere LLP
+                  </p>
                 </div>
               </div>
             </Link>
@@ -68,7 +72,7 @@ export function Header() {
             </div>
 
             {/* Mobile Menu Button */}
-            <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <button className="md:hidden flex-shrink-0" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
