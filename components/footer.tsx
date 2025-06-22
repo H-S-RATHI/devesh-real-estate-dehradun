@@ -1,13 +1,13 @@
 import Image from "next/image"
 import Link from "next/link"
-import { Phone, Mail, MapPin, Facebook, Instagram, Twitter } from "lucide-react"
+import { Phone, Mail, MapPin, Facebook, Instagram } from "lucide-react"
 
 export function Footer() {
   return (
     <footer className="bg-gray-900 text-white py-12">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-3 gap-8">
-          <div>
+        <div className="grid md:grid-cols-4 gap-8">
+          <div className="md:col-span-2 md:pr-8">
             <div className="flex items-center space-x-2 mb-4">
               <Image
                 src="/logo.png"
@@ -35,7 +35,7 @@ export function Footer() {
             </div>
           </div>
 
-          <div>
+          <div className="md:col-span-1">
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
@@ -61,19 +61,22 @@ export function Footer() {
             </ul>
           </div>
 
-          <div>
+          <div className="md:col-span-1">
             <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
             <div className="space-y-3">
               <div className="flex items-center space-x-2">
-                <Phone className="w-4 h-4 text-blue-400" />
+                <Phone className="w-4 h-4 text-blue-400 flex-shrink-0" aria-hidden="true" />
                 <span className="text-gray-400">9760872136</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Mail className="w-4 h-4 text-blue-400" />
-                <span className="text-gray-400">deveshrajput5245@gmail.com</span>
+                {/* Wrap email in mailto link and ensure icon displays */}
+                <Mail className="block w-4 h-4 text-blue-400 flex-shrink-0" aria-hidden="true" />
+                <a href="mailto:deveshrajput5245@gmail.com" className="text-gray-400 hover:text-blue-400 break-all">
+                  deveshrajput5245@gmail.com
+                </a>
               </div>
               <div className="flex items-center space-x-2">
-                <MapPin className="w-4 h-4 text-blue-400" />
+                <MapPin className="w-4 h-4 text-blue-400 flex-shrink-0" aria-hidden="true" />
                 <span className="text-gray-400">Dehradun, Uttarakhand</span>
               </div>
             </div>
