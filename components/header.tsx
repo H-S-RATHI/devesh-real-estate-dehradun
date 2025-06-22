@@ -19,14 +19,14 @@ export function Header() {
             <Link href="/" className="flex items-center space-x-2">
               <Image
                 src="/logo.png"
-                alt="Devesh Real Estate Dehradun"
+                alt="Devesh Real Estate Dehradun – Powered by Doon Biospehere LLP"
                 width={50}
                 height={50}
                 className="rounded-full"
               />
               <div>
-                <h1 className="text-xl font-bold text-gray-900">Devesh Real Estate</h1>
-                <p className="text-sm text-blue-600">Dehradun</p>
+                <h1 className="text-xl font-bold text-gray-900">Devesh Real Estate Dehradun</h1>
+                <p className="text-sm text-blue-600">– Powered by Doon Biosphere LLP</p>
               </div>
             </Link>
 

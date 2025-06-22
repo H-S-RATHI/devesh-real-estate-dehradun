@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Phone, Navigation, ExternalLink } from 'lucide-react';
+import {Navigation, ExternalLink } from 'lucide-react';
 
 const AnimatedMap = () => {
     const locationName = "TOOTH-PICK, Dehradun, India";

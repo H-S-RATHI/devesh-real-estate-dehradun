@@ -37,7 +37,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h1 className="text-4xl font-bold text-gray-900 mb-6">About Devesh Real Estate</h1>
+              <h1 className="text-4xl font-bold text-gray-900 mb-6">About Devesh Real Estate Dehradun – Powered by Doon Biosphere LLP</h1>
               <p className="text-lg text-gray-700 mb-6">
                 With over 15 years of experience in Dehradun's real estate market, we have established ourselves as the
                 most trusted name for property investments in the region.
@@ -47,9 +47,9 @@ export default function AboutPage() {
                 their needs but also provides excellent returns on investment.
               </p>
               <div className="flex items-center space-x-2">
-                <Image src="/logo.png" alt="Devesh Real Estate" width={60} height={60} className="rounded-full" />
+                <Image src="/logo.png" alt="Devesh Real Estate Dehradun – Powered by Doon Biospehere LLP" width={60} height={60} className="rounded-full" />
                 <div>
-                  <p className="font-semibold text-gray-900">Devesh Kumar</p>
+                  <p className="font-semibold text-gray-900">Devesh Rajput</p>
                   <p className="text-blue-600">Founder & CEO</p>
                 </div>
               </div>

@@ -6,19 +6,19 @@ export function Footer() {
   return (
     <footer className="bg-gray-900 text-white py-12">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-3 gap-8">
           <div>
             <div className="flex items-center space-x-2 mb-4">
               <Image
                 src="/logo.png"
-                alt="Devesh Real Estate Dehradun"
+                alt="Devesh Real Estate Dehradun – Powered by Doon Biospehere LLP"
                 width={40}
                 height={40}
                 className="rounded-full"
               />
               <div>
-                <h3 className="text-xl font-bold">Devesh Real Estate</h3>
-                <p className="text-blue-400">Dehradun</p>
+                <h3 className="text-xl font-bold">Devesh Real Estate Dehradun</h3>
+                <p className="text-blue-400">– Powered by Doon Biosphere LLP</p>
               </div>
             </div>
             <p className="text-gray-400 mb-4">
@@ -62,17 +62,6 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold mb-4">Services</h4>
-            <ul className="space-y-2 text-gray-400">
-              <li>Residential Plots</li>
-              <li>Commercial Properties</li>
-              <li>Property Consultation</li>
-              <li>Legal Documentation</li>
-              <li>Investment Advisory</li>
-            </ul>
-          </div>
-
-          <div>
             <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
             <div className="space-y-3">
               <div className="flex items-center space-x-2">
@@ -93,7 +82,7 @@ export function Footer() {
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center">
           <p className="text-gray-400">
-            © 2024 Devesh Real Estate Dehradun. All rights reserved. |
+            © 2024 Devesh Real Estate Dehradun – Powered by Doon Biospehere LLP. All rights reserved. |
             <span className="text-blue-400"> Trusted by 500+ families</span>
           </p>
         </div>
