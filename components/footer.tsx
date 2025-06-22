@@ -13,12 +13,12 @@ export function Footer() {
               <Image
                 src="/logo.png"
                 alt="Devesh Real Estate Dehradun"
-                width={50}
-                height={50}
-                className="rounded-full"
+                width={60}
+                height={60}
+                className="rounded-full flex-shrink-0"
               />
               <div>
-                <h3 className="text-xl font-bold">Devesh Real Estate Dehradun</h3>
+                <h3 className="text-[1.1rem] font-bold">Devesh Real Estate Dehradun</h3>
                 <div className="flex items-center space-x-2 pt-1">
                   <Image
                     src="/Doon-logo.jpg"
@@ -27,7 +27,7 @@ export function Footer() {
                     height={20}
                     className="rounded-full"
                   />
-                  <p className="text-blue-400">– Powered by Doon Biosphere LLP</p>
+                  <p className="text-[.8rem] text-blue-400">– Powered by Doon Biosphere LLP</p>
                 </div>
               </div>
             </div>
