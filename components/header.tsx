@@ -17,16 +17,27 @@ export function Header() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             <Link href="/" className="flex items-center space-x-2">
+              {/* Main Logo */}
               <Image
                 src="/logo.png"
-                alt="Devesh Real Estate Dehradun – Powered by Doon Biospehere LLP"
+                alt="Devesh Real Estate Dehradun"
                 width={50}
                 height={50}
                 className="rounded-full"
               />
               <div>
                 <h1 className="text-xl font-bold text-gray-900">Devesh Real Estate Dehradun</h1>
-                <p className="text-sm text-blue-600">– Powered by Doon Biosphere LLP</p>
+                {/* Powered By with Doon Biosphere logo */}
+                <div className="flex items-center space-x-2 pt-1">
+                  <Image
+                    src="/doon-logo.jpg"
+                    alt="Doon Biosphere LLP"
+                    width={20}
+                    height={20}
+                    className="rounded-full"
+                  />
+                  <p className="text-sm text-blue-600">– Powered by Doon Biosphere LLP</p>
+                </div>
               </div>
             </Link>
 

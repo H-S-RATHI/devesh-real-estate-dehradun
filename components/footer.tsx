@@ -8,17 +8,27 @@ export function Footer() {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-8">
           <div className="md:col-span-2 md:pr-8">
+            {/* Logo + Powered By */}
             <div className="flex items-center space-x-2 mb-4">
               <Image
                 src="/logo.png"
-                alt="Devesh Real Estate Dehradun – Powered by Doon Biospehere LLP"
-                width={40}
-                height={40}
+                alt="Devesh Real Estate Dehradun"
+                width={50}
+                height={50}
                 className="rounded-full"
               />
               <div>
                 <h3 className="text-xl font-bold">Devesh Real Estate Dehradun</h3>
-                <p className="text-blue-400">– Powered by Doon Biosphere LLP</p>
+                <div className="flex items-center space-x-2 pt-1">
+                  <Image
+                    src="/doon-logo.jpg"
+                    alt="Doon Biosphere LLP"
+                    width={20}
+                    height={20}
+                    className="rounded-full"
+                  />
+                  <p className="text-blue-400">– Powered by Doon Biosphere LLP</p>
+                </div>
               </div>
             </div>
             <p className="text-gray-400 mb-4">
@@ -48,7 +58,7 @@ export function Footer() {
               </li>
               <li>
                 <div className="flex items-center space-x-2">
-                  <MapPin className="w-4 h-4 text-blue-400" /> {/* Using MapPin for Properties */}
+                  <MapPin className="w-4 h-4 text-blue-400" />
                   <Link href="/properties" className="text-gray-400 hover:text-blue-400">
                     Properties
                   </Link>
@@ -56,7 +66,7 @@ export function Footer() {
               </li>
               <li>
                 <div className="flex items-center space-x-2">
-                  <Info className="w-4 h-4 text-blue-400" /> {/* Using Info for About Us */}
+                  <Info className="w-4 h-4 text-blue-400" />
                   <Link href="/about" className="text-gray-400 hover:text-blue-400">
                     About Us
                   </Link>
@@ -64,7 +74,7 @@ export function Footer() {
               </li>
               <li>
                 <div className="flex items-center space-x-2">
-                  <Mail className="w-4 h-4 text-blue-400" /> {/* Using Mail for Contact */}
+                  <Mail className="w-4 h-4 text-blue-400" />
                   <Link href="/contact" className="text-gray-400 hover:text-blue-400">
                     Contact
                   </Link>
@@ -81,8 +91,7 @@ export function Footer() {
                 <span className="text-gray-400">9760872136</span>
               </div>
               <div className="flex items-center space-x-2">
-                {/* Wrap email in mailto link and ensure icon displays */}
-                <Mail className="block w-4 h-4 text-blue-400 flex-shrink-0" aria-hidden="true" />
+                <Mail className="w-4 h-4 text-blue-400 flex-shrink-0" aria-hidden="true" />
                 <a href="mailto:deveshrajput5245@gmail.com" className="text-gray-400 hover:text-blue-400 break-all">
                   deveshrajput5245@gmail.com
                 </a>
@@ -97,7 +106,7 @@ export function Footer() {
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center">
           <p className="text-gray-400">
-            © 2024 Devesh Real Estate Dehradun – Powered by Doon Biospehere LLP. All rights reserved. |
+            © 2024 Devesh Real Estate Dehradun – Powered by Doon Biosphere LLP. All rights reserved. |
             <span className="text-blue-400"> Trusted by 500+ families</span>
           </p>
         </div>
