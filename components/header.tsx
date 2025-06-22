@@ -30,7 +30,7 @@ export function Header() {
                 {/* Powered By with Doon Biosphere logo */}
                 <div className="flex items-center space-x-2 pt-1">
                   <Image
-                    src="/doon-logo.jpg"
+                    src="/Doon-logo.jpg"
                     alt="Doon Biosphere LLP"
                     width={20}
                     height={20}
