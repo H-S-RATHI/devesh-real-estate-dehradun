@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { Phone, Mail, MapPin, Facebook, Instagram } from "lucide-react"
+import { Phone, Mail, MapPin, Facebook, Instagram, Home, Info } from "lucide-react"
 
 export function Footer() {
   return (
@@ -39,24 +39,36 @@ export function Footer() {
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="text-gray-400 hover:text-blue-400">
-                  Home
-                </Link>
+                <div className="flex items-center space-x-2">
+                  <Home className="w-4 h-4 text-blue-400" />
+                  <Link href="/" className="text-gray-400 hover:text-blue-400">
+                    Home
+                  </Link>
+                </div>
               </li>
               <li>
-                <Link href="/properties" className="text-gray-400 hover:text-blue-400">
-                  Properties
-                </Link>
+                <div className="flex items-center space-x-2">
+                  <MapPin className="w-4 h-4 text-blue-400" /> {/* Using MapPin for Properties */}
+                  <Link href="/properties" className="text-gray-400 hover:text-blue-400">
+                    Properties
+                  </Link>
+                </div>
               </li>
               <li>
-                <Link href="/about" className="text-gray-400 hover:text-blue-400">
-                  About Us
-                </Link>
+                <div className="flex items-center space-x-2">
+                  <Info className="w-4 h-4 text-blue-400" /> {/* Using Info for About Us */}
+                  <Link href="/about" className="text-gray-400 hover:text-blue-400">
+                    About Us
+                  </Link>
+                </div>
               </li>
               <li>
-                <Link href="/contact" className="text-gray-400 hover:text-blue-400">
-                  Contact
-                </Link>
+                <div className="flex items-center space-x-2">
+                  <Mail className="w-4 h-4 text-blue-400" /> {/* Using Mail for Contact */}
+                  <Link href="/contact" className="text-gray-400 hover:text-blue-400">
+                    Contact
+                  </Link>
+                </div>
               </li>
             </ul>
           </div>
