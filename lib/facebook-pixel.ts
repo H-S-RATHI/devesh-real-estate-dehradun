@@ -45,7 +45,7 @@ export const trackPropertyView = (propertyName: string, price: string) => {
   trackEvent("ViewContent", {
     content_name: propertyName,
     content_category: "Real Estate",
-    value: price,
+    value: parseFloat(price.replace(/[^0-9.-]+/g, "")),
     currency: "INR",
   })
 }
