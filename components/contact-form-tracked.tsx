@@ -19,12 +19,42 @@ export function ContactFormTracked() {
     phone: "",
     budget: "",
     message: "",
-  })
+  });
+
+  const [errors, setErrors] = useState({
+    name: "",
+    phone: "",
+  });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isTouched, setIsTouched] = useState({
+    name: false,
+    phone: false
+  });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Mark all fields as touched to show errors
+    setIsTouched({
+      name: true,
+      phone: true
+    });
+    
+    // Validate all fields
+    const nameError = validateField('name', formData.name);
+    const phoneError = validateField('phone', formData.phone);
+    
+    setErrors({
+      name: nameError,
+      phone: phoneError,
+    });
+    
+    // If there are validation errors, don't submit
+    if (nameError || phoneError) {
+      return;
+    }
+    
     setIsSubmitting(true);
     
     // Initialize EmailJS with public key
@@ -44,9 +74,9 @@ export function ContactFormTracked() {
 
       // Send email using EmailJS
       const templateParams = {
-        from_name: formData.name,
+        name: formData.name,  // Changed from from_name to name to match template
         phone: formData.phone,
-        budget: formData.budget,
+        budget: formData.budget,  // Fixed typo from 'budget' to 'budget' to match template
         message: formData.message,
       };
 
@@ -74,11 +104,51 @@ export function ContactFormTracked() {
     }
   };
 
+  const validateField = (name: string, value: string) => {
+    if (name === 'name') {
+      if (!value.trim()) return 'Name is required';
+      if (value.trim().length < 3) return 'Name must be at least 3 characters';
+      if (!/^[a-zA-Z\s]*$/.test(value)) return 'Name can only contain letters and spaces';
+      return '';
+    }
+    
+    if (name === 'phone') {
+      if (!value) return 'Phone number is required';
+      if (!/^\d+$/.test(value)) return 'Phone number must contain only numbers';
+      if (value.length !== 10) return 'Phone number must be 10 digits';
+      return '';
+    }
+    
+    return '';
+  };
+
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name } = e.target;
+    setIsTouched(prev => ({ ...prev, [name]: true }));
+    
+    // Validate the field when it loses focus
+    const error = validateField(name, formData[name as keyof typeof formData]);
+    setErrors(prev => ({ ...prev, [name]: error }));
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
+    const { name, value } = e.target;
+    
+    // For phone field, only allow numbers
+    if (name === 'phone' && value !== '' && !/^\d*$/.test(value)) {
+      return; // Don't update if not a number
+    }
+    
+    setFormData(prev => ({
+      ...prev,
+      [name]: value,
+    }));
+    
+    // Only validate if the field has been touched before
+    if (isTouched[name as keyof typeof isTouched]) {
+      const error = validateField(name, value);
+      setErrors(prev => ({ ...prev, [name]: error }));
+    }
   }
 
   return (
@@ -90,19 +160,31 @@ export function ContactFormTracked() {
             name="name"
             value={formData.name}
             onChange={handleChange}
+            onBlur={handleBlur}
             placeholder="Enter your full name"
-            required
+            className={isTouched.name && errors.name ? 'border-red-500' : ''}
           />
+          {isTouched.name && errors.name && (
+            <p className="mt-1 text-sm text-red-600">{errors.name}</p>
+          )}
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
           <Input
             name="phone"
+            type="tel"
             value={formData.phone}
             onChange={handleChange}
-            placeholder="Enter your phone number"
-            required
+            onBlur={handleBlur}
+            placeholder="Enter your 10-digit phone number"
+            maxLength={10}
+            className={isTouched.phone && errors.phone ? 'border-red-500' : ''}
           />
+          {isTouched.phone && errors.phone ? (
+            <p className="mt-1 text-sm text-red-600">{errors.phone}</p>
+          ) : (
+            <p className="mt-1 text-xs text-gray-500">We'll use this to contact you</p>
+          )}
         </div>
       </div>
 
