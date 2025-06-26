@@ -3,6 +3,7 @@
 import { useParams, useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 import Image from "next/image"
+import useEmblaCarousel from 'embla-carousel-react'
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -27,6 +28,8 @@ import {
   Share2,
   ArrowLeft,
   CheckCircle,
+  ChevronLeft,
+  ChevronRight,
   Home
 } from "lucide-react"
 import { getPropertyById } from "@/lib/properties-data"
@@ -39,6 +42,33 @@ export default function PropertyDetailPage() {
   const [activeImageIndex, setActiveImageIndex] = useState(0)
   const [loading, setLoading] = useState(true)
   const [isLiked, setIsLiked] = useState(false)
+  
+  // Initialize Embla Carousel with type assertion
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }) as [any, any]
+  const [scrollSnaps, setScrollSnaps] = useState<number[]>([])
+
+  const scrollTo = (index: number) => {
+    if (emblaApi) emblaApi.scrollTo(index)
+  }
+
+  const onSelect = () => {
+    if (!emblaApi) return
+    setActiveImageIndex(emblaApi.selectedScrollSnap())
+  }
+
+  useEffect(() => {
+    if (!emblaApi) return
+    
+    onSelect()
+    setScrollSnaps(emblaApi.scrollSnapList())
+    emblaApi.on('select', onSelect)
+    emblaApi.on('reInit', onSelect)
+    
+    return () => {
+      emblaApi.off('select', onSelect)
+      emblaApi.off('reInit', onSelect)
+    }
+  }, [emblaApi])
 
   useEffect(() => {
     if (params.id) {
@@ -109,27 +139,58 @@ export default function PropertyDetailPage() {
         <div className="grid lg:grid-cols-2 gap-12 mb-12">
           {/* Images */}
           <div className="space-y-4">
-            <div className="relative aspect-[5/3] rounded-2xl overflow-hidden">
-              <Image
-                src={property.images[activeImageIndex] || "/placeholder.svg"}
-                alt="Property"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute top-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
+            <div className="relative aspect-[5/3] rounded-2xl overflow-hidden" ref={emblaRef}>
+              <div className="flex h-full">
+                {property.images.map((image: string, index: number) => (
+                  <div key={index} className="flex-[0_0_100%] min-w-0 relative">
+                    <Image
+                      src={image || "/placeholder.svg"}
+                      alt={`Property image ${index + 1}`}
+                      fill
+                      className="object-cover"
+                      priority={index === 0}
+                    />
+                  </div>
+                ))}
+              </div>
+              
+              {/* Navigation buttons */}
+              <button 
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-900 rounded-full p-2 shadow-md z-10"
+                onClick={() => emblaApi && emblaApi.scrollPrev()}
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+              <button 
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-900 rounded-full p-2 shadow-md z-10"
+                onClick={() => emblaApi && emblaApi.scrollNext()}
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+              
+              {/* Image counter */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
                 {activeImageIndex + 1} / {property.images.length}
               </div>
             </div>
+            
+            {/* Thumbnails */}
             <div className="grid grid-cols-5 gap-3">
               {property.images.map((image: string, index: number) => (
                 <button
                   key={index}
-                  onClick={() => setActiveImageIndex(index)}
-                  className={`relative aspect-square rounded-lg overflow-hidden ${
-                    index === activeImageIndex ? "ring-2 ring-blue-500" : ""
+                  onClick={() => scrollTo(index)}
+                  className={`relative aspect-square rounded-lg overflow-hidden transition-opacity duration-200 ${
+                    index === activeImageIndex ? "ring-2 ring-blue-500" : "opacity-70 hover:opacity-100"
                   }`}
                 >
-                  <Image src={image || "/placeholder.svg"} alt="" fill className="object-cover" />
+                  <Image 
+                    src={image || "/placeholder.svg"} 
+                    alt={`Thumbnail ${index + 1}`} 
+                    fill 
+                    className="object-cover"
+                    sizes="(max-width: 768px) 20vw, 10vw"
+                  />
                 </button>
               ))}
             </div>

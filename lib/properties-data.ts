@@ -18,7 +18,7 @@ export const properties = [
     views: 1047,
     trending: true,
     highlights: [
-      "1 km – GRD College",
+      "4 km – GRD College",
       "2 km – Dev Bhoomi University",
       "20 mins – Prem Nagar",
       "Close to IMA & Hospitals",
