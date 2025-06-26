@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { TrackedButton } from "@/components/tracked-button"
 import Image from "next/image"
+import Link from "next/link"
 import { MapPin, Eye, TrendingUp, CheckCircle } from "lucide-react"
 import { properties } from "@/lib/properties-data"
 import { trackPropertyView } from "@/lib/facebook-pixel"
@@ -29,53 +30,63 @@ export default function PropertiesPage() {
 
         <div className="grid lg:grid-cols-2 gap-8">
           {properties.map((property) => (
-            <Card key={property.id} className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
-              <div className="relative">
-                <Image
-                  src={property.image || "/placeholder.svg"}
-                  alt={property.title}
-                  width={600}
-                  height={300}
-                  className="w-full h-64 object-cover"
-                />
-                <div className="absolute top-4 left-4 flex space-x-2">
-                  <Badge
-                    className={`${
-                      property.status === "Available"
-                        ? "bg-green-600"
-                        : property.status === "SOLD OUT"
-                          ? "bg-red-600"
-                          : "bg-orange-600"
-                    }`}
-                  >
-                    {property.status === "SOLD OUT" && <CheckCircle className="w-3 h-3 mr-1" />}
-                    {property.status}
-                  </Badge>
-                  {property.trending && property.status === "Available" && (
-                    <Badge className="bg-orange-600">🔥 Trending</Badge>
-                  )}
+            <Card key={property.id} className="overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer">
+              <Link href={`/properties/${property.id}`} className="block">
+                <div className="relative">
+                  <Image
+                    src={property.image || "/placeholder.svg"}
+                    alt={property.title}
+                    width={600}
+                    height={300}
+                    className="w-full h-64 object-cover"
+                  />
+                  <div className="absolute top-4 left-4 flex space-x-2">
+                    <Badge
+                      className={`${
+                        property.status === "Available"
+                          ? "bg-green-600"
+                          : property.status === "SOLD OUT"
+                            ? "bg-red-600"
+                            : "bg-orange-600"
+                      }`}
+                    >
+                      {property.status === "SOLD OUT" && <CheckCircle className="w-3 h-3 mr-1" />}
+                      {property.status}
+                    </Badge>
+                    {property.trending && property.status === "Available" && (
+                      <Badge className="bg-orange-600">🔥 Trending</Badge>
+                    )}
+                  </div>
+                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-2 py-1 rounded flex items-center space-x-1">
+                    <Eye className="w-4 h-4 text-gray-600" />
+                    <span className="text-sm text-gray-600">{property.views}</span>
+                  </div>
+                  {/* Click to view overlay */}
+                  <div className="absolute inset-0 bg-black/0 hover:bg-black/10 transition-colors duration-300 flex items-center justify-center">
+                    <div className="bg-white/90 px-4 py-2 rounded-lg opacity-0 hover:opacity-100 transition-opacity duration-300">
+                      <span className="text-sm font-medium text-gray-900">Click to view full details</span>
+                    </div>
+                  </div>
                 </div>
-                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-2 py-1 rounded flex items-center space-x-1">
-                  <Eye className="w-4 h-4 text-gray-600" />
-                  <span className="text-sm text-gray-600">{property.views}</span>
-                </div>
-              </div>
+              </Link>
 
               <CardContent className="p-6">
-                <div className="flex items-center space-x-2 text-blue-600 mb-2">
-                  <MapPin className="w-4 h-4" />
-                  <span className="text-sm">{property.location}</span>
-                </div>
+                <Link href={`/properties/${property.id}`} className="block hover:bg-gray-50 -mx-6 -mt-6 px-6 pt-6 mb-4 transition-colors duration-300">
+                  <div className="flex items-center space-x-2 text-blue-600 mb-2">
+                    <MapPin className="w-4 h-4" />
+                    <span className="text-sm">{property.location}</span>
+                  </div>
 
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{property.title}</h3>
-                <p className="text-gray-600 mb-4">{property.description}</p>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 hover:text-blue-600 transition-colors">{property.title}</h3>
+                  <p className="text-gray-600 mb-4">{property.description}</p>
 
-                <div className="flex items-center space-x-2 mb-4">
-                  <span className="text-2xl font-bold text-green-600">{property.price}</span>
-                  <span className="text-gray-600">{property.unit}</span>
-                  {property.status === "Available" && <span className="text-sm text-gray-500">(Negotiable)</span>}
-                  {property.trending && <TrendingUp className="w-4 h-4 text-green-600" />}
-                </div>
+                  <div className="flex items-center space-x-2 mb-4">
+                    <span className="text-2xl font-bold text-green-600">{property.price}</span>
+                    <span className="text-gray-600">{property.unit}</span>
+                    {property.status === "Available" && <span className="text-sm text-gray-500">(Negotiable)</span>}
+                    {property.trending && <TrendingUp className="w-4 h-4 text-green-600" />}
+                  </div>
+                </Link>
 
                 <div className="bg-blue-50 p-4 rounded-lg mb-4">
                   <h4 className="font-semibold text-gray-900 mb-2">Location Highlights:</h4>
@@ -97,30 +108,40 @@ export default function PropertiesPage() {
                   ))}
                 </div>
 
-                {property.status === "Available" ? (
-                  <div className="flex space-x-2">
-                    <TrackedButton
-                      type="phone"
-                      location={property.location}
-                      className="bg-red-600 hover:bg-red-700 flex-1"
+                <div className="space-y-3">
+                  <Link href={`/properties/${property.id}`}>
+                    <div
+                      className="bg-blue-600 hover:bg-blue-700 w-full text-center text-white px-4 py-2 rounded-md cursor-pointer"
                     >
-                      Call Now
-                    </TrackedButton>
-                    <TrackedButton
-                      type="whatsapp"
-                      location={property.location}
-                      className="bg-green-600 hover:bg-green-700 flex-1"
-                      href={`https://wa.me/919760872136?text=Hi, I'm interested in ${property.title} at ${property.location}. Please share more details.`}
-                    >
-                      Get Details
-                    </TrackedButton>
-                  </div>
-                ) : (
-                  <div className="bg-gray-100 p-3 rounded text-center">
-                    <p className="text-gray-600 font-medium">✅ Successfully Completed Project</p>
-                    <p className="text-sm text-gray-500">All plots sold to satisfied customers</p>
-                  </div>
-                )}
+                      {property.status === "Available" ? "🏠 View Full Details & Gallery" : "📊 View Success Story"}
+                    </div>
+                  </Link>
+                  
+                  {property.status === "Available" ? (
+                    <div className="flex space-x-2">
+                      <TrackedButton
+                        type="phone"
+                        location={property.location}
+                        className="bg-red-600 hover:bg-red-700 flex-1"
+                      >
+                        Call Now
+                      </TrackedButton>
+                      <TrackedButton
+                        type="whatsapp"
+                        location={property.location}
+                        className="bg-green-600 hover:bg-green-700 flex-1"
+                        href={`https://wa.me/919760872136?text=Hi, I'm interested in ${property.title} at ${property.location}. Please share more details.`}
+                      >
+                       WhatsApp
+                      </TrackedButton>
+                    </div>
+                  ) : (
+                    <div className="bg-gray-100 p-3 rounded text-center">
+                      <p className="text-gray-600 font-medium">✅ Successfully Completed Project</p>
+                      <p className="text-sm text-gray-500">All plots sold to satisfied customers</p>
+                    </div>
+                  )}
+                </div>
               </CardContent>
             </Card>
           ))}
