@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { trackLead, trackContact } from "@/lib/facebook-pixel"
 import emailjs from '@emailjs/browser';
+import Link from "next/link";
 
 // Debug log to check environment variables
 console.log('EmailJS Public Key:', process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
@@ -222,6 +223,16 @@ export function ContactFormTracked() {
       >
         {isSubmitting ? 'Sending...' : 'Send Message & Get Call Back'}
       </Button>
+      
+      <div className="mt-4 p-3 bg-gray-50 rounded-lg border">
+        <p className="text-xs text-gray-600 text-center">
+          By submitting this form, you agree to our{" "}
+          <Link href="/privacy-policy" className="text-blue-600 hover:text-blue-800 underline">
+            Privacy Policy
+          </Link>
+          . We respect your privacy and will only use your information to contact you about properties.
+        </p>
+      </div>
     </form>
   )
 }

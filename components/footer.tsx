@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { Phone, Mail, MapPin, Facebook, Instagram, Home, Info } from "lucide-react"
+import { Phone, Mail, MapPin, Facebook, Instagram, Home, Info, Shield } from "lucide-react"
 
 export function Footer() {
   return (
@@ -80,6 +80,14 @@ export function Footer() {
                   </Link>
                 </div>
               </li>
+              <li>
+                <div className="flex items-center space-x-2">
+                  <Shield className="w-4 h-4 text-blue-400" />
+                  <Link href="/privacy-policy" className="text-gray-400 hover:text-blue-400">
+                    Privacy Policy
+                  </Link>
+                </div>
+              </li>
             </ul>
           </div>
 
@@ -108,6 +116,13 @@ export function Footer() {
           <p className="text-gray-400">
             © 2024 Devesh Real Estate Dehradun – Powered by Doon Biosphere LLP. All rights reserved. |
             <span className="text-blue-400"> Trusted by 500+ families</span>
+          </p>
+          <p className="text-gray-500 text-sm mt-2">
+            <Link href="/privacy-policy" className="hover:text-blue-400 underline">
+              Privacy Policy
+            </Link>
+            {" | "}
+            Your privacy is important to us
           </p>
         </div>
       </div>
