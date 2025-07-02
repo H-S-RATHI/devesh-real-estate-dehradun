@@ -5,7 +5,7 @@ import "./globals.css"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { FacebookPixel } from "@/components/facebook-pixel"
-
+import { InstantPopupFormSmart } from "@/components/instant-popup-form-smart"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
@@ -34,6 +34,7 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <InstantPopupFormSmart />
       </body>
     </html>
   )
