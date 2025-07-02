@@ -22,7 +22,6 @@ export default function Home() {
       <MultiLocationFeatured />
       <ProfessionalStats />
       <WhyChooseUs />
-      <LocationHighlights />
       <Testimonials />
       <ContactCTA />
       <MapSection />
